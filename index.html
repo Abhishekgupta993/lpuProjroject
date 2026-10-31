@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RentoGo | Welcome</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f8f3;
+    color: #17251d;
+}
+
+header {
+    background: #c8e0c8;
+    border: 2px solid #17251d;
+    padding: 22px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 38px;
+}
+
+header span {
+    color: #176b45;
+}
+
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero h2 {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    color: #647168;
+    line-height: 1.7;
+}
+
+.terms {
+    max-width: 850px;
+    margin: 0 auto 35px;
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px #00000012;
+}
+
+.terms h2 {
+    padding: 20px;
+    background: #e2f0df;
+}
+
+.terms-content {
+    height: 230px;
+    overflow-y: auto;
+    padding: 20px;
+    line-height: 1.7;
+}
+
+.terms-content h3 {
+    color: #176b45;
+    margin: 12px 0 5px;
+}
+
+.terms-content p {
+    margin-bottom: 10px;
+    color: #58655c;
+}
+
+.accept-area {
+    padding: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.accept-area label {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.accept-area input {
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    accent-color: #176b45;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #176b45;
+    color: white;
+    cursor: pointer;
+}
+
+button:disabled {
+    background: #bdc8bf;
+    cursor: not-allowed;
+}
+
+#vehicleSection {
+    display: none;
+    max-width: 850px;
+    margin: 0 auto 40px;
+    padding: 20px;
+}
+
+#vehicleSection h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.vehicle {
+    background: white;
+    border: 1px solid #dce8dd;
+    padding: 30px 20px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    text-align: center;
+    transition: .2s;
+}
+
+.vehicle:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px #00000010;
+}
+
+.vehicle .icon {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.vehicle h3 {
+    margin-bottom: 10px;
+}
+
+.vehicle p {
+    color: #647168;
+}
+
+.vehicle a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 11px 18px;
+    background: #ffd43b;
+    border-radius: 8px;
+    color: #17251d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer {
+    background: #17251d;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+@media (min-width: 650px) {
+    .vehicle-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Rento<span>Go</span></h1>
+    <p>Your Journey, Your Choice</p>
+</header>
+
+<section class="hero">
+    <h2>WELCOME TO RentoGo</h2>
+    <p>
+        Find your perfect ride for every journey.<br>
+        Please read and accept our Terms & Conditions.
+    </p>
+</section>
+
+<section class="terms">
+    <h2>📜 Terms & Conditions</h2>
+
+    <div class="terms-content">
+        <h3>1. Platform Usage</h3>
+        <p>RentoGo helps users explore vehicle rental options. Vehicle listings and prices may be illustrative and do not guarantee availability.</p>
+
+        <h3>2. Driving Licence</h3>
+        <p>Users must meet applicable legal age requirements and possess a valid driving licence for the selected vehicle.</p>
+
+        <h3>3. Rental Charges</h3>
+        <p>Rental fees, deposits, taxes, fuel charges and other costs must be confirmed with the rental provider before payment.</p>
+
+        <h3>4. Booking Policy</h3>
+        <p>Selecting a vehicle on this demo page does not confirm a booking. The rental provider must confirm availability.</p>
+
+        <h3>5. Safety</h3>
+        <p>Users must follow traffic laws and operate vehicles safely. Reckless driving and driving under the influence are prohibited.</p>
+
+        <h3>6. Damage and Fines</h3>
+        <p>Vehicle damage, traffic fines and return conditions are subject to the actual rental agreement.</p>
+
+        <h3>7. Privacy</h3>
+        <p>Personal information should be handled securely and collected only for a clear purpose.</p>
+
+        <h3>8. Agreement</h3>
+        <p>By accepting these terms, you confirm that you have read and understood the rules displayed on this page.</p>
+    </div>
+
+    <div class="accept-area">
+        <label>
+            <input type="checkbox" id="acceptTerms">
+            <span>I have read and agree to the Terms & Conditions.</span>
+        </label>
+
+        <button id="continueBtn" disabled>
+            Accept & Continue →
+        </button>
+    </div>
+</section>
+
+<section id="vehicleSection">
+    <h2>Choose Your Vehicle</h2>
+
+    <div class="vehicle-grid">
+        <div class="vehicle">
+            <div class="icon">🚘</div>
+            <h3>Cars</h3>
+            <p>Comfortable rides for everyday travel.</p>
+            <a href="cars.html">Explore Cars →</a>
+        </div>
+
+        <div class="vehicle">
+            <div class="icon">🏍️</div>
+            <h3>Motorcycles</h3>
+            <p>Discover bikes for your next adventure.</p>
+            <a href="bike.html">Explore Bikes →</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 RentoGo | Your Journey, Your Choice</p>
+</footer>
+
+<script>
+const checkbox = document.getElementById("acceptTerms");
+const continueBtn = document.getElementById("continueBtn");
+const vehicleSection = document.getElementById("vehicleSection");
+
+checkbox.addEventListener("change", function () {
+    continueBtn.disabled = !checkbox.checked;
+});
+
+continueBtn.addEventListener("click", function () {
+    if (!checkbox.checked) {
+        alert("Please accept the Terms & Conditions first.");
+        return;
+    }
+
+    vehicleSection.style.display = "block";
+
+    vehicleSection.scrollIntoView({
+        behavior: "smooth"
+    });
+});
+</script>
+
+</body>
+</html>
+```

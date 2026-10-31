@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RentoGo | Sports Bike Rentals</title>
+
+<style>
+:root {
+    --yellow: #ffd43b;
+    --dark: #101820;
+    --green: #078b55;
+    --muted: #737b87;
+    --light: #f6f8fc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--light);
+    color: var(--dark);
+}
+
+/* HEADER */
+
+header {
+    padding: 18px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 20px #10182010;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #d5a400;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #35404d;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+nav a:hover {
+    color: #d5a400;
+}
+
+.nav-btn {
+    background: var(--dark);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* HERO */
+
+.hero {
+    padding: 75px 8%;
+    min-height: 470px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 80% 30%, #fff0a7, transparent 45%),
+        linear-gradient(120deg, #fffdf4, #eff3ff);
+}
+
+.hero-text {
+    max-width: 550px;
+    animation: slideIn .8s ease both;
+}
+
+.tag {
+    display: inline-block;
+    padding: 9px 14px;
+    border-radius: 30px;
+    background: #fff0b4;
+    color: #735300;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5vw, 65px);
+    line-height: 1.08;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #d5a400;
+}
+
+.hero p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 28px;
+}
+
+.primary-btn {
+    display: inline-block;
+    padding: 15px 23px;
+    border-radius: 10px;
+    background: var(--yellow);
+    color: #171717;
+    text-decoration: none;
+    font-weight: 800;
+    transition: .3s;
+}
+
+.primary-btn:hover {
+    transform: translateY(-4px);
+}
+
+.hero-image {
+    width: 48%;
+    animation: floatBike 4s ease-in-out infinite;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 22px;
+    box-shadow: 0 20px 50px #10182022;
+}
+
+/* BENEFITS */
+
+.benefits {
+    padding: 28px 8%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    background: white;
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.benefit-icon {
+    font-size: 23px;
+    background: #fff3c4;
+    padding: 12px;
+    border-radius: 12px;
+}
+
+.benefit strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.benefit small {
+    color: var(--muted);
+}
+
+/* BIKES SECTION */
+
+.bikes-section {
+    max-width: 1500px;
+    margin: auto;
+    padding: 70px 7%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 900;
+    color: #b78a00;
+    margin-bottom: 12px;
+}
+
+.section-heading h2 {
+    font-size: clamp(29px, 4vw, 42px);
+    margin-bottom: 12px;
+}
+
+.section-heading p:last-child {
+    color: var(--muted);
+}
+
+/* SEARCH */
+
+.search-box {
+    display: flex;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto 25px;
+    padding: 5px 15px;
+    border: 1px solid #e2e6ed;
+    border-radius: 12px;
+    background: white;
+}
+
+.search-box span {
+    font-size: 22px;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    padding: 13px;
+    font-size: 14px;
+}
+
+/* FILTERS */
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.filter-btn {
+    padding: 11px 18px;
+    border: 1px solid #e1e5ec;
+    border-radius: 25px;
+    background: white;
+    cursor: pointer;
+    font-weight: 700;
+    transition: .25s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--dark);
+    color: white;
+}
+
+/* BIKE CARDS */
+
+.bike-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.bike-card {
+    overflow: hidden;
+    background: white;
+    border: 1px solid #edf0f5;
+    border-radius: 17px;
+    box-shadow: 0 8px 28px #1b2b4010;
+    animation: appear .5s ease both;
+    transition: transform .3s, box-shadow .3s;
+}
+
+.bike-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 38px #1b2b4020;
+}
+
+.bike-photo {
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+    background: #e9edf2;
+}
+
+.bike-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s;
+}
+
+.bike-card:hover .bike-photo img {
+    transform: scale(1.06);
+}
+
+.offer {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #fff0b4;
+    color: #6b4d00;
+    padding: 8px 11px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.bike-info {
+    padding: 20px;
+}
+
+.bike-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.bike-title h3 {
+    font-size: 18px;
+}
+
+.category-label {
+    font-size: 10px;
+    color: #626b79;
+    background: #f0f2f6;
+    padding: 6px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.bike-details {
+    color: var(--muted);
+    font-size: 12px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #edf0f4;
+    line-height: 1.8;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin: 17px 0;
+}
+
+.old-price {
+    color: #939ba7;
+    text-decoration: line-through;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.new-price {
+    font-size: 23px;
+    color: var(--green);
+    font-weight: 900;
+}
+
+.new-price small {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+.saving {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--green);
+    background: #e3f8ee;
+    padding: 7px 9px;
+    border-radius: 7px;
+}
+
+.duration-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.rental-days {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dfe4ec;
+    border-radius: 8px;
+    background: white;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.total-price {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.total-price span {
+    color: var(--green);
+    font-size: 18px;
+}
+
+.book-btn {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 9px;
+    background: var(--yellow);
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.book-btn:hover {
+    background: #f0b800;
+    letter-spacing: .3px;
+}
+
+.no-results {
+    display: none;
+    text-align: center;
+    color: var(--muted);
+    padding: 35px;
+    grid-column: 1 / -1;
+}
+
+/* FOOTER */
+
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 40px 7%;
+}
+
+footer p {
+    color: #bac1ca;
+    font-size: 13px;
+    line-height: 2;
+}
+
+footer .logo {
+    margin-bottom: 10px;
+}
+
+/* ANIMATIONS */
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes floatBike {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 950px) {
+    .bike-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero {
+        padding: 55px 6%;
+    }
+}
+
+@media (max-width: 650px) {
+    header {
+        padding: 17px 5%;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .nav-btn {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-image {
+        width: 100%;
+    }
+
+    .hero-image img {
+        height: 250px;
+    }
+
+    .benefits {
+        grid-template-columns: 1fr;
+    }
+
+    .benefit {
+        justify-content: flex-start;
+    }
+
+    .bikes-section {
+        padding: 50px 5%;
+    }
+
+    .bike-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+    <div class="logo">Rento<span>Go.</span></div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#bikes">Explore Bikes</a>
+        <a href="#benefits">Benefits</a>
+    </nav>
+
+    <a class="nav-btn" href="#bikes">Find Your Bike ↗</a>
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-text">
+        <span class="tag">🏍️ POWERFUL RIDES. SMART PRICES.</span>
+
+        <h1>
+            Feel the speed.<br>
+            <span>Own the road.</span>
+        </h1>
+
+        <p>
+            Discover sports bikes for city rides, highway escapes and
+            weekend adventures. Compare estimated rental prices and
+            choose a ride that matches your style.
+        </p>
+
+        <a class="primary-btn" href="#bikes">Explore Bikes ↓</a>
+    </div>
+
+    <div class="hero-image">
+        <img
+            src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1000&q=85"
+            alt="Motorcycle on a road"
+            onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Sports+Bike'">
+    </div>
+
+</section>
+
+<!-- BENEFITS -->
+
+<section class="benefits" id="benefits">
+
+    <div class="benefit">
+        <div class="benefit-icon">💰</div>
+        <div>
+            <strong>Budget-friendly options</strong>
+            <small>Compare estimated daily rents</small>
+        </div>
+    </div>
+
+    <div class="benefit">
+        <div class="benefit-icon">🏍️</div>
+        <div>
+            <strong>Choose your bike</strong>
+            <small>Street bikes to superbikes</small>
+        </div>
+    </div>
+
+    <div class="benefit">
+        <div class="benefit-icon">🔎</div>
+        <div>
+            <strong>Easy discovery</strong>
+            <small>Search and compare models</small>
+        </div>
+    </div>
+
+</section>
+
+<!-- BIKES -->
+
+<section class="bikes-section" id="bikes">
+
+    <div class="section-heading">
+        <p class="eyebrow">FIND YOUR NEXT RIDE</p>
+        <h2>Sports Bikes for Every Budget</h2>
+        <p>Pick your bike and calculate your estimated rental cost.</p>
+    </div>
+
+    <div class="search-box">
+        <span>⌕</span>
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="Search R15, KTM, Ninja..."
+            aria-label="Search sports bikes">
+    </div>
+
+    <div class="filters">
+        <button class="filter-btn active" data-category="all">All Bikes</button>
+        <button class="filter-btn" data-category="entry">Entry Sports</button>
+        <button class="filter-btn" data-category="street">Street Sports</button>
+        <button class="filter-btn" data-category="superbike">Superbikes</button>
+    </div>
+
+    <div class="bike-container" id="bikeContainer"></div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+    <div class="logo">Rento<span>Go.</span></div>
+    <p>Sports bikes for your next adventure.</p>
+    <p>Prices shown are illustrative estimates, not confirmed rental offers.</p>
+    <p>© 2026 RentoGo. All rights reserved.</p>
+</footer>
+
+<script>
+
+/* STEP 1: BIKE DATA */
+
+const bikes = [
+
+    {
+        name: "Yamaha R15 V4",
+        category: "entry",
+        engine: "155cc",
+        transmission: "Manual",
+        oldPrice: 1200,
+        price: 900,
+        image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=85",
+        imageAlt: "Sports motorcycle"
+    },
+
+    {
+        name: "Suzuki Gixxer SF 250",
+        category: "entry",
+        engine: "250cc",
+        transmission: "Manual",
+        oldPrice: 1600,
+        price: 1200,
+        image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=85",
+        imageAlt: "Sport motorcycle"
+    },
+
+    {
+        name: "KTM RC 200",
+        category: "entry",
+        engine: "200cc",
+        transmission: "Manual",
+        oldPrice: 1800,
+        price: 1400,
+        image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=801&q=85",
+        imageAlt: "Sport motorcycle"
+    },
+
+    {
+        name: "Yamaha MT-15",
+        category: "street",
+        engine: "155cc",
+        transmission: "Manual",
+        oldPrice: 1400,
+        price: 1100,
+        image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=801&q=85",
+        imageAlt: "Street motorcycle"
+    },
+
+    {
+        name: "Kawasaki Ninja 300",
+        category: "street",
+        engine: "300cc",
+        transmission: "Manual",
+        oldPrice: 3500,
+        price: 2800,
+        image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=802&q=85",
+        imageAlt: "Sport motorcycle"
+    },
+
+    {
+        name: "KTM RC 390",
+        category: "street",
+        engine: "390cc",
+        transmission: "Manual",
+        oldPrice: 4000,
+        price: 3200,
+        image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=802&q=85",
+        imageAlt: "Sport motorcycle"
+    },
+
+    {
+        name: "TVS Apache RR 310",
+        category: "street",
+        engine: "312cc",
+        transmission: "Manual",
+        oldPrice: 3200,
+        price: 2500,
+        image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=803&q=85",
+        imageAlt: "Sport motorcycle"
+    },
+
+    {
+        name: "Kawasaki Ninja ZX-6R",
+        category: "superbike",
+        engine: "636cc",
+        transmission: "Manual",
+        oldPrice: 10000,
+        price: 8000,
+        image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=803&q=85",
+        imageAlt: "Super sport motorcycle"
+    },
+
+    {
+        name: "BMW G 310 RR",
+        category: "street",
+        engine: "310cc",
+        transmission: "Manual",
+        oldPrice: 3000,
+        price: 2400,
+        image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=804&q=85",
+        imageAlt: "Sport motorcycle"
+    }
+
+];
+
+/* STEP 2: GET HTML ELEMENTS */
+
+const bikeContainer = document.getElementById("bikeContainer");
+const searchInput = document.getElementById("searchInput");
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+/* STEP 3: CATEGORY LABELS */
+
+function getCategoryName(category) {
+
+    const categories = {
+        entry: "ENTRY SPORTS",
+        street: "STREET SPORTS",
+        superbike: "SUPERBIKE"
+    };
+
+    return categories[category] || category.toUpperCase();
+}
+
+/* STEP 4: DISPLAY BIKE CARDS */
+
+function displayBikes(bikeList) {
+
+    bikeContainer.innerHTML = "";
+
+    if (bikeList.length === 0) {
+
+        bikeContainer.innerHTML = `
+            <p class="no-results" style="display:block">
+                No bikes found. Try another search.
+            </p>
+        `;
+
+        return;
+    }
+
+    bikeList.forEach(function(bike) {
+
+        const saving = bike.oldPrice - bike.price;
+
+        const discount = Math.round(
+            (saving / bike.oldPrice) * 100
+        );
+
+        const card = document.createElement("article");
+
+        card.className = "bike-card";
+
+        card.innerHTML = `
+
+            <div class="bike-photo">
+
+                <img
+                    src="${bike.image}"
+                    alt="${bike.imageAlt}"
+                    loading="lazy"
+                    onerror="this.onerror=null;this.src='https://placehold.co/800x500?text=Sports+Bike'">
+
+                <span class="offer">${discount}% OFF</span>
+
+            </div>
+
+            <div class="bike-info">
+
+                <div class="bike-title">
+
+                    <h3>${bike.name}</h3>
+
+                    <span class="category-label">
+                        ${getCategoryName(bike.category)}
+                    </span>
+
+                </div>
+
+                <p class="bike-details">
+                    Engine: ${bike.engine}<br>
+                    Transmission: ${bike.transmission}
+                </p>
+
+                <div class="price-row">
+
+                    <div>
+
+                        <p class="old-price">
+                            ₹${bike.oldPrice.toLocaleString("en-IN")}/day
+                        </p>
+
+                        <p class="new-price">
+                            ₹${bike.price.toLocaleString("en-IN")}
+                            <small>/day</small>
+                        </p>
+
+                    </div>
+
+                    <span class="saving">
+                        SAVE ₹${saving.toLocaleString("en-IN")}
+                    </span>
+
+                </div>
+
+                <label class="duration-label">
+                    Rental duration
+                </label>
+
+                <select class="rental-days" aria-label="Select rental duration">
+
+                    <option value="1">1 day</option>
+                    <option value="2">2 days</option>
+                    <option value="3">3 days</option>
+                    <option value="5">5 days</option>
+                    <option value="7">7 days</option>
+
+                </select>
+
+                <p class="total-price">
+                    Estimated total:
+                    ₹<span>${bike.price.toLocaleString("en-IN")}</span>
+                </p>
+
+                <button class="book-btn">
+                    Choose this bike →
+                </button>
+
+            </div>
+
+        `;
+
+        bikeContainer.appendChild(card);
+
+        const daysSelect = card.querySelector(".rental-days");
+        const totalDisplay = card.querySelector(".total-price span");
+        const bookButton = card.querySelector(".book-btn");
+
+        /* CALCULATE RENTAL TOTAL */
+
+        daysSelect.addEventListener("change", function() {
+
+            const days = Number(daysSelect.value);
+            const total = bike.price * days;
+
+            totalDisplay.textContent = total.toLocaleString("en-IN");
+
+        });
+
+        /* BOOKING DEMO */
+
+        bookButton.addEventListener("click", function() {
+
+            const days = Number(daysSelect.value);
+            const total = bike.price * days;
+
+            bookBike(bike.name, days, total);
+
+        });
+
+    });
+
+}
+
+/* STEP 5: SEARCH AND FILTER */
+
+function filterBikes() {
+
+    const searchText = searchInput.value.toLowerCase().trim();
+
+    let selectedCategory = "all";
+
+    filterButtons.forEach(function(button) {
+
+        if (button.classList.contains("active")) {
+            selectedCategory = button.dataset.category;
+        }
+
+    });
+
+    const filteredBikes = bikes.filter(function(bike) {
+
+        const nameMatches = bike.name.toLowerCase().includes(searchText);
+
+        const categoryMatches =
+            selectedCategory === "all" ||
+            bike.category === selectedCategory;
+
+        return nameMatches && categoryMatches;
+
+    });
+
+    displayBikes(filteredBikes);
+
+}
+
+/* STEP 6: SEARCH INPUT */
+
+searchInput.addEventListener("input", filterBikes);
+
+/* STEP 7: FILTER BUTTONS */
+
+filterButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        filterButtons.forEach(function(btn) {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        filterBikes();
+
+    });
+
+});
+
+/* STEP 8: BOOKING CONFIRMATION */
+
+function bookBike(bikeName, days, total) {
+
+    const confirmation = confirm(
+
+        "Bike: " + bikeName +
+        "\nDuration: " + days + " day(s)" +
+        "\nEstimated total: ₹" + total.toLocaleString("en-IN") +
+        "\n\nDo you want to continue?"
+
+    );
+
+    if (confirmation) {
+
+        alert(
+
+            "You selected " + bikeName +
+            "\nRental duration: " + days + " day(s)" +
+            "\nEstimated total: ₹" + total.toLocaleString("en-IN") +
+            "\n\nThis is a demo. No actual booking has been made."
+
+        );
+
+    }
+
+}
+
+/* STEP 9: LOAD BIKES */
+
+displayBikes(bikes);
+
+</script>
+
+</body>
+</html>
+```

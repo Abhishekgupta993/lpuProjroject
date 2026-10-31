@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RentoGo | Affordable Car Rentals</title>
+
+<style>
+:root {
+    --yellow: #ffd43b;
+    --dark: #101820;
+    --green: #078b55;
+    --muted: #737b87;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f6f8fc;
+    color: var(--dark);
+}
+
+/* NAVIGATION */
+
+header {
+    padding: 18px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 20px #10182010;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #d5a400;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #35404d;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+nav a:hover {
+    color: #d5a400;
+}
+
+.nav-btn {
+    background: var(--dark);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* HERO */
+
+.hero {
+    padding: 75px 8%;
+    min-height: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 80% 30%, #fff0a7, transparent 45%),
+        linear-gradient(120deg, #fffdf4, #eff3ff);
+}
+
+.hero-text {
+    max-width: 550px;
+    animation: slideIn .8s ease both;
+}
+
+.tag {
+    display: inline-block;
+    padding: 9px 14px;
+    border-radius: 30px;
+    background: #fff0b4;
+    color: #735300;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5vw, 65px);
+    line-height: 1.08;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #d5a400;
+}
+
+.hero p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 28px;
+}
+
+.primary-btn {
+    display: inline-block;
+    padding: 15px 23px;
+    border-radius: 10px;
+    background: var(--yellow);
+    color: #171717;
+    text-decoration: none;
+    font-weight: 800;
+    transition: .3s;
+}
+
+.primary-btn:hover {
+    transform: translateY(-4px);
+}
+
+.hero-image {
+    width: 47%;
+    animation: floatCar 4s ease-in-out infinite;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 22px;
+    box-shadow: 0 20px 50px #10182022;
+}
+
+/* BENEFITS */
+
+.benefits {
+    padding: 28px 8%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    background: white;
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.benefit-icon {
+    font-size: 23px;
+    background: #fff3c4;
+    padding: 12px;
+    border-radius: 12px;
+}
+
+.benefit strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.benefit small {
+    color: var(--muted);
+}
+
+/* CARS SECTION */
+
+.cars-section {
+    max-width: 1500px;
+    margin: auto;
+    padding: 70px 7%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 900;
+    color: #b78a00;
+    margin-bottom: 12px;
+}
+
+.section-heading h2 {
+    font-size: clamp(29px, 4vw, 42px);
+    margin-bottom: 12px;
+}
+
+.section-heading p:last-child {
+    color: var(--muted);
+}
+
+/* SEARCH */
+
+.search-box {
+    display: flex;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto 25px;
+    padding: 5px 15px;
+    border: 1px solid #e2e6ed;
+    border-radius: 12px;
+    background: white;
+}
+
+.search-box span {
+    font-size: 22px;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    padding: 13px;
+    font-size: 14px;
+}
+
+/* FILTERS */
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.filter-btn {
+    padding: 11px 18px;
+    border: 1px solid #e1e5ec;
+    border-radius: 25px;
+    background: white;
+    cursor: pointer;
+    font-weight: 700;
+    transition: .25s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--dark);
+    color: white;
+}
+
+/* CARDS */
+
+.car-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.car-card {
+    overflow: hidden;
+    background: white;
+    border: 1px solid #edf0f5;
+    border-radius: 17px;
+    box-shadow: 0 8px 28px #1b2b4010;
+    animation: appear .6s ease both;
+    transition: transform .3s, box-shadow .3s;
+}
+
+.car-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 38px #1b2b4020;
+}
+
+.car-photo {
+    height: 210px;
+    position: relative;
+    overflow: hidden;
+    background: #e9edf2;
+}
+
+.car-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s;
+}
+
+.car-card:hover .car-photo img {
+    transform: scale(1.06);
+}
+
+.offer {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #fff0b4;
+    color: #6b4d00;
+    padding: 8px 11px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.car-info {
+    padding: 20px;
+}
+
+.car-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.car-title h3 {
+    font-size: 18px;
+}
+
+.category-label {
+    font-size: 10px;
+    color: #626b79;
+    background: #f0f2f6;
+    padding: 6px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.car-details {
+    color: var(--muted);
+    font-size: 12px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin: 17px 0;
+}
+
+.old-price {
+    color: #939ba7;
+    text-decoration: line-through;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.new-price {
+    font-size: 23px;
+    color: var(--green);
+    font-weight: 900;
+}
+
+.new-price small {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+.saving {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--green);
+    background: #e3f8ee;
+    padding: 7px 9px;
+    border-radius: 7px;
+}
+
+/* DURATION CALCULATOR */
+
+.duration-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.rental-days {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dfe4ec;
+    border-radius: 8px;
+    background: white;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.total-price {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.total-price span {
+    color: var(--green);
+    font-size: 18px;
+}
+
+.book-btn {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 9px;
+    background: var(--yellow);
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.book-btn:hover {
+    background: #f0b800;
+    letter-spacing: .3px;
+}
+
+.no-results {
+    display: none;
+    text-align: center;
+    color: var(--muted);
+    padding: 35px;
+    grid-column: 1 / -1;
+}
+
+/* FOOTER */
+
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 40px 7%;
+}
+
+footer p {
+    color: #bac1ca;
+    font-size: 13px;
+    line-height: 2;
+}
+
+footer .logo {
+    margin-bottom: 10px;
+}
+
+/* ANIMATIONS */
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes floatCar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 950px) {
+    .car-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero {
+        padding: 55px 6%;
+    }
+}
+
+@media (max-width: 650px) {
+    header {
+        padding: 17px 5%;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .nav-btn {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-image {
+        width: 100%;
+    }
+
+    .benefits {
+        grid-template-columns: 1fr;
+    }
+
+    .benefit {
+        justify-content: flex-start;
+    }
+
+    .cars-section {
+        padding: 50px 5%;
+    }
+
+    .car-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Rento<span>Go.</span></div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#cars">Explore Cars</a>
+        <a href="#benefits">Benefits</a>
+    </nav>
+
+    <a class="nav-btn" href="#cars">Find Your Car ↗️</a>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-text">
+        <span class="tag">🚗 SMART RIDES. SMART PRICES.</span>
+
+        <h1>Your journey.<br>
+            <span>Your budget.</span>
+        </h1>
+
+        <p>
+            Discover affordable hatchbacks, comfortable sedans and
+            family SUVs. Find a ride for your everyday commute or
+            your next weekend adventure.
+        </p>
+
+        <a class="primary-btn" href="#cars">Explore Cars ↓</a>
+    </div>
+
+    <div class="hero-image">
+        <img
+            src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1000&q=85"
+            alt="Car for a road trip"
+            onerror="this.style.display='none'">
+    </div>
+</section>
+
+<section class="benefits" id="benefits">
+    <div class="benefit">
+        <div class="benefit-icon">💰</div>
+        <div>
+            <strong>Budget-friendly options</strong>
+            <small>Cars for everyday travel</small>
+        </div>
+    </div>
+
+    <div class="benefit">
+        <div class="benefit-icon">🚘</div>
+        <div>
+            <strong>Choose your ride</strong>
+            <small>Hatchbacks, sedans and SUVs</small>
+        </div>
+    </div>
+
+    <div class="benefit">
+        <div class="benefit-icon">🔎</div>
+        <div>
+            <strong>Easy discovery</strong>
+            <small>Search and compare cars</small>
+        </div>
+    </div>
+</section>
+
+<section class="cars-section" id="cars">
+
+    <div class="section-heading">
+        <p class="eyebrow">FIND YOUR EVERYDAY RIDE</p>
+        <h2>Cars for Every Budget</h2>
+        <p>Affordable options for city drives and family trips.</p>
+    </div>
+
+    <div class="search-box">
+        <span>⌕</span>
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="Search Swift, WagonR, Nexon...">
+    </div>
+
+    <div class="filters">
+        <button class="filter-btn active" data-category="all">All Cars</button>
+        <button class="filter-btn" data-category="hatchback">Hatchbacks</button>
+        <button class="filter-btn" data-category="sedan">Sedans</button>
+        <button class="filter-btn" data-category="suv">SUVs</button>
+    </div>
+
+    <div class="car-container" id="carContainer"></div>
+
+</section>
+
+<footer>
+    <div class="logo">Rento<span>Go.</span></div>
+    <p>Affordable rides for everyday adventures.</p>
+    <p>Prices shown are examples, not confirmed rental offers.</p>
+    <p>© 2026 RentoGo. All rights reserved.</p>
+</footer>
+
+<script>
+
+// STEP 1: Store car information in an array of objects
+
+const cars = [
+    {
+        name: "Maruti Suzuki Swift",
+        category: "hatchback",
+        seats: 5,
+        transmission: "Manual",
+        oldPrice: 1500,
+        price: 1199,
+        image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Illustrative compact car; replace with a verified Swift photo"
+    },
+    {
+        name: "Maruti Suzuki WagonR",
+        category: "hatchback",
+        seats: 5,
+        transmission: "Manual",
+        oldPrice: 1250,
+        price: 999,
+        image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Illustrative compact car; replace with a verified WagonR photo"
+    },
+    {
+        name: "Maruti Baleno",
+        category: "hatchback",
+        seats: 5,
+        transmission: "Manual",
+        oldPrice: 1800,
+        price: 1499,
+        image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Illustrative car; replace with a verified Baleno photo"
+    },
+    {
+        name: "Maruti Dzire",
+        category: "sedan",
+        seats: 5,
+        transmission: "Manual",
+        oldPrice: 1900,
+        price: 1499,
+        image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Illustrative sedan; replace with a verified Dzire photo"
+    },
+    {
+        name: "Tata Nexon",
+        category: "suv",
+        seats: 5,
+        transmission: "Manual",
+        oldPrice: 2500,
+        price: 1999,
+        image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Illustrative SUV; replace with a verified Nexon photo"
+    },
+    {
+        name: "Hyundai Creta",
+        category: "suv",
+        seats: 5,
+        transmission: "Manual",
+        oldPrice: 3000,
+        price: 2549,
+        image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Illustrative SUV; replace with a verified Creta photo"
+    },
+    {
+        name: "Tata Tiago",
+        category: "hatchback",
+        seats: 5,
+        transmission: "Manual",
+        oldPrice: 1250,
+        price: 999,
+        image: "https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Illustrative car; replace with a verified Tiago photo"
+    },
+    {
+        name: "Tata Punch",
+        category: "suv",
+        seats: 5,
+        transmission: "Manual",
+        oldPrice: 2000,
+        price: 1699,
+        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Illustrative SUV; replace with a verified Punch photo"
+    },
+    {
+        name: "Honda Amaze",
+        category: "sedan",
+        seats: 5,
+        transmission: "Manual",
+        oldPrice: 1900,
+        price: 1499,
+        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Illustrative car; replace with a verified Amaze photo"
+    }
+];
+
+// STEP 2: Get HTML elements
+
+const carContainer = document.getElementById("carContainer");
+const searchInput = document.getElementById("searchInput");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const noResults = document.getElementById("noResults");
+
+// STEP 3: Create car cards using a loop
+
+function displayCars(carList) {
+
+    carContainer.innerHTML = "";
+
+    // Check if the list is empty
+    if (carList.length === 0) {
+        carContainer.innerHTML =
+            "<p style='text-align:center; padding:30px; grid-column:1/-1;'>No cars found. Try another search.</p>";
+        return;
+    }
+
+    // Repeat for every car in the array
+    for (let i = 0; i < carList.length; i++) {
+
+        const car = carList[i];
+
+        // Calculate discount amount and percentage
+        const saving = car.oldPrice - car.price;
+        const discount = Math.round(
+            (saving / car.oldPrice) * 100
+        );
+
+        // Create a new card
+        const card = document.createElement("article");
+
+        card.className = "car-card";
+
+        // Build the card HTML
+        card.innerHTML = `
+            <div class="car-photo">
+                <img
+                    src="${car.image}"
+                    alt="${car.imageAlt}"
+                    loading="lazy"
+                    onerror="this.style.opacity='0.2'">
+
+                <span class="offer">${discount}% OFF</span>
+            </div>
+
+            <div class="car-info">
+                <div class="car-title">
+                    <h3>${car.name}</h3>
+                    <span class="category-label">
+                        ${car.category.toUpperCase()}
+                    </span>
+                </div>
+
+                <p class="car-details">
+                    ${car.seats} Seats · ${car.transmission}
+                </p>
+
+                <div class="price-row">
+                    <div>
+                        <p class="old-price">
+                            ₹${car.oldPrice}/day
+                        </p>
+
+                        <p class="new-price">
+                            ₹${car.price}<small>/day</small>
+                        </p>
+                    </div>
+
+                    <span class="saving">
+                        SAVE ₹${saving}
+                    </span>
+                </div>
+
+                <label class="duration-label"
+                       for="days-${i}">
+                    Rental duration
+                </label>
+
+                <select class="rental-days" id="days-${i}">
+                    <option value="1">1 day</option>
+                    <option value="2">2 days</option>
+                    <option value="3">3 days</option>
+                    <option value="5">5 days</option>
+                    <option value="7">7 days</option>
+                </select>
+
+                <p class="total-price">
+                    Total: ₹<span>${car.price}</span>
+                </p>
+
+                <button class="book-btn">
+                    Choose this car →
+                </button>
+            </div>
+        `;
+
+        // Add the card to the webpage
+        carContainer.appendChild(card);
+
+        // Find the duration selector and total price
+        const daysSelect = card.querySelector(".rental-days");
+        const totalDisplay = card.querySelector(".total-price span");
+        const bookButton = card.querySelector(".book-btn");
+
+        // Update the total whenever duration changes
+        daysSelect.addEventListener("change", function() {
+
+            let days = Number(daysSelect.value);
+            let total = car.price * days;
+
+            totalDisplay.textContent = total.toLocaleString("en-IN");
+        });
+
+        // Open booking confirmation
+        bookButton.addEventListener("click", function() {
+
+            let days = Number(daysSelect.value);
+            let total = car.price * days;
+
+            bookCar(car.name, days, total);
+        });
+    }
+}
+
+// STEP 4: Search and filter cars
+
+function filterCars() {
+
+    let searchText = searchInput.value.toLowerCase().trim();
+    let selectedCategory = "all";
+
+    // Find the currently selected category
+    for (let i = 0; i < filterButtons.length; i++) {
+
+        if (filterButtons[i].classList.contains("active")) {
+            selectedCategory = filterButtons[i].dataset.category;
+        }
+    }
+
+    let filteredCars = [];
+
+    // Check every car
+    for (let i = 0; i < cars.length; i++) {
+
+        let carName = cars[i].name.toLowerCase();
+
+        let nameMatches = carName.includes(searchText);
+
+        let categoryMatches = false;
+
+        if (selectedCategory === "all") {
+            categoryMatches = true;
+        } else if (cars[i].category === selectedCategory) {
+            categoryMatches = true;
+        }
+
+        // Add matching cars to the new array
+        if (nameMatches && categoryMatches) {
+            filteredCars.push(cars[i]);
+        }
+    }
+
+    displayCars(filteredCars);
+}
+
+// STEP 5: React to search input
+
+searchInput.addEventListener("input", function() {
+    filterCars();
+});
+
+// STEP 6: React to category buttons
+
+for (let i = 0; i < filterButtons.length; i++) {
+
+    filterButtons[i].addEventListener("click", function() {
+
+        // Remove active style from every button
+        for (let j = 0; j < filterButtons.length; j++) {
+            filterButtons[j].classList.remove("active");
+        }
+
+        // Highlight the clicked button
+        this.classList.add("active");
+
+        // Refresh the list
+        filterCars();
+    });
+}
+
+// STEP 7: Booking confirmation
+
+function bookCar(carName, days, total) {
+
+    let confirmation = confirm(
+        "Car: " + carName +
+        "\nDuration: " + days + " day(s)" +
+        "\nEstimated total: ₹" + total.toLocaleString("en-IN") +
+        "\n\nDo you want to continue?"
+    );
+
+    if (confirmation === true) {
+
+        alert(
+            "You selected " + carName +
+            "\nEstimated total: ₹" + total.toLocaleString("en-IN") +
+            "\n\nThis is a demo. No actual booking has been made."
+        );
+
+    } else {
+
+        alert("Your selection was cancelled.");
+    }
+}
+
+// STEP 8: Show all cars when the page loads
+
+displayCars(cars);
+
+</script>
+
+</body>
+</html>
